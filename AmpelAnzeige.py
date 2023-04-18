@@ -60,8 +60,12 @@ class AmpelAnzeige:
             self.canvas.itemconfigure(self.id_gruen, fill="darkgray")
             self.status[2]=0
         self.fenster.update()
+
     def getstatus(self):
         return self.status
+
+    def geometry(self,x,y):
+        return self.geometry('200x400'+ x + y)
               
 class AmpelFussAnzeige:
     def __init__(self, name):
@@ -108,4 +112,8 @@ class AmpelFussAnzeige:
         self.fenster.update()
     def getstatus(self):
         return self.status
+
+    def geometry(self,x,y):
+        return self.geometry('200x400'+ x + y)
+
 
