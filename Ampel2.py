@@ -49,14 +49,8 @@ while True:
 
     for i in range(0,a):
         green(l[i])
-        red(l[i])
         t.sleep(z)
+        red(l[i])
 
-        #if i!=a-1:
-        #    red(l[i+1])
-         #   green(l[i+1])
-      #  else:
-       #     red(l[i-1])
-        #    green(l[i-1])
-    
+
 
