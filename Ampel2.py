@@ -1,4 +1,5 @@
-import time
+import random
+import time as t
 from AmpelAnzeige import *
 
 z=int(input("Wie Lange ist die Schaltzeit ? : "))
@@ -6,19 +7,37 @@ a=int(input("Wie viele Ampel benoetigst du ? : "))
 
 l=list()
 
+#--------------------------Funktionen--------------------------#
+def green(a1):
+    a1.setan([1,0,0])
+    t.sleep(4)
+    a1.setan([1,1,0])
+    t.sleep(1)
+    a1.setaus()
+    a1.setan([0,0,1 ])
+def red(a1):
+    a1.setaus()
+    a1.setan([0,1,0])
+    t.sleep(1)
+    a1.setaus()
+    a1.setan([1,0,0])
+
+#----------------------Variable Erstellung----------------------#
 for i in range (0, a):
     exec(f"a{i} = AmpelAnzeige(i+1)")
     l.append(locals()[f"a{i}"])
     #l.append()
 
-
 for i in range(0, a):
-    am=l[i]
-    am.setan([0,1,0])
-a1=AmpelAnzeige("ret")
-a1.setan([1,0,0])
+    window_width = 200
+    window_height = 400
+    padding = 50
+    x = (window_width + padding) * i
+    y = (window_height - padding) * i
+    l[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
+while True:
+    for i in range(0,a):
+        red(l[i])
+        green(l[i])
 
-
-
-mainloop()
