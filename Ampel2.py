@@ -28,6 +28,7 @@ for i in range (0, a):
     exec(f"a{i} = AmpelAnzeige(i+1)")
     l.append(locals()[f"a{i}"])
 
+#---------------------Fenster nebeneinander---------------------#
 for i in range(0, a):
     window_width = 200
     window_height = 400
@@ -36,6 +37,8 @@ for i in range(0, a):
     y = 0
     #(window_height + padding) * i
     l[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+#------------------------Ampel Animation------------------------#
 
 i=0
 for i in range(0,a):
