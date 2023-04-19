@@ -65,7 +65,6 @@ class AmpelAnzeige:
         return self.status
 
     def geometry(self, geostrig):
-        #self.geometry(f"200x400 + {x} + {y}")
         self.fenster.geometry(geostrig)
               
 class AmpelFussAnzeige:
@@ -113,8 +112,5 @@ class AmpelFussAnzeige:
         self.fenster.update()
     def getstatus(self):
         return self.status
-
-    def geometry(self,x,y):
-        return self.geometry('200x400'+ x + y)
-
-
+    def geometry(self, geostrig):
+        self.fenster.geometry(geostrig)
