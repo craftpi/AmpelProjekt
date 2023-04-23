@@ -24,6 +24,7 @@ class AmpelAnzeige:
         self.fenster.geometry("200x400")
         self.LabelAmpel=Label(self.fenster, text=self.name)
         self.LabelAmpel.pack()
+
         # Zeichenfläche
         self.canvas = Canvas(master=self.fenster)
         self.canvas.place(x=0, y=20, width=200, height=400)
@@ -63,6 +64,7 @@ class AmpelAnzeige:
 
     def getstatus(self):
         return self.status
+        
 
     def geometry(self, geostrig):
         self.fenster.geometry(geostrig)
