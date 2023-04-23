@@ -5,16 +5,16 @@ from Ampel4Klasse import *
 #--------------------------Funktionen--------------------------#
 def green_red(a1):
     a1.setgreen()
-    t.sleep(2)
+    t.sleep(1)
     a1.setyellow()
-    t.sleep(2)
+    t.sleep(1)
     a1.setred()
 
 def red_green(a1):
     a1.setred()
-    t.sleep(2)
+    t.sleep(1)
     a1.setredyellow()
-    t.sleep(2)
+    t.sleep(1)
     a1.setgreen()
 
 def greenf(a1):
@@ -32,8 +32,19 @@ zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
 b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
 
-if z!=zf:
-    print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+tu =True
+while tu == True:
+    if z!=zf:
+        print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+        fr=input("\033[36m"+"Moechtest du die Eigaben Korigieren [J;N] ? ")
+        if fr == "J" :
+            z=int(input("\033[32m"+"Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+            zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
+        else:
+            tu = False
+            print("\033[33m"+"execute ... ")
+    else:
+        tu = False
 
 lv=list()
 lf=list()
@@ -77,16 +88,10 @@ while True:
 
     for i in range(0,a):
         greenf(lf[i])
-        green_red(lv[i])
-        t.sleep(z)
         red_green(lv[i])
+        t.sleep(z)
         redf(lf[i])
-
-    for i in range(0,b):
-        greenf()
-        t.sleep(zf)
-        redf()
-
-
+        green_red(lv[i])
+        t.sleep(2)
 
         
