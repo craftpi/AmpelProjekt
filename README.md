@@ -1,2 +1,2 @@
 # AmpelProjekt
-Ein Ampelprogramm
+Ein Schul Ampelprojekt
