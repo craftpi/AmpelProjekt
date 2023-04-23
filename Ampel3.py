@@ -30,6 +30,9 @@ zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
 b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
 
+if z!=zf:
+    print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+
 lv=list()
 lf=list()
 

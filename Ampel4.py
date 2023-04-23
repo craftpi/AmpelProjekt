@@ -32,6 +32,9 @@ zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
 b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
 
+if z!=zf:
+    print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+
 lv=list()
 lf=list()
 
@@ -45,9 +48,17 @@ for i in range (0, a):
     lv.append(locals()[f"a{i}"])
 
 #----------------------Fenster ausrichten----------------------#
-#for i in range (0, a):
- #   Ampel.setgeo()
-
+for i in range (0, a):
+    lv[i].setgeo()
+ 
+for i in range(0, b):
+    window_width = 200
+    window_height = 400
+    padding = 50
+    x = (window_width + padding) * i
+    y = 400
+    #(window_height + padding) * i
+    lf[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 #------------------------Ampel Animation------------------------#
 
@@ -60,7 +71,7 @@ for i in range(0,a):
     lf[i].setaus()
     lf[i].setan([1,0,0])
     
-t.sleep(2)
+t.sleep(z)
 
 while True:
 
@@ -70,6 +81,11 @@ while True:
         t.sleep(z)
         red_green(lv[i])
         redf(lf[i])
+
+    for i in range(0,b):
+        greenf()
+        t.sleep(zf)
+        redf()
 
 
 

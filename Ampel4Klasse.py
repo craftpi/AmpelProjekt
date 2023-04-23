@@ -7,7 +7,7 @@ class Ampel(object):
         self.window_width = 200
         self.window_height = 400
         self.padding = 50
-        self.x = (self.window_width + self.padding) * i
+        self.x = (self.window_width + self.padding) * (i-1)
         self.y = 0
         
     def setgreen(self):
