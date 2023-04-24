@@ -4,14 +4,14 @@ from AmpelAnzeige import *
 from Ampel4 import *
 
 #--------------------------Funktionen--------------------------#
-def green_red(a1):
+def green_red_v(a1):
     a1.setgreen()
     t.sleep(1)
     a1.setyellow()
     t.sleep(1)
     a1.setred()
 
-def red_green(a1):
+def red_green_v(a1):
     a1.setred()
     t.sleep(1)
     a1.setredyellow()
@@ -31,7 +31,7 @@ def redf(a1):
 z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
 zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
-b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
+b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
 
 tu =True
 
@@ -94,9 +94,9 @@ async def main():
 async def vampel():
     for i in range(0,a):
         await asyncio.sleep(zf)
-        red_green(lv[i])
+        red_green_v(lv[i])
         await asyncio.sleep(z)
-        green_red(lv[i])
+        green_red_v(lv[i])
         await asyncio.sleep(2)
 
 async def fampel():
