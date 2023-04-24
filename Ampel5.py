@@ -18,13 +18,15 @@ def red_green_v(a1):
     t.sleep(1)
     a1.setgreen()
 
-def greenf(a1):
-    a1.setaus()
-    a1.setan([0,1])
+def green_red_f(a1):
+    a1.setgreen()
+    t.sleep(1)
+    a1.setred()
 
-def redf(a1):
-    a1.setaus()
-    a1.setan([1,0])
+def red_green_f(a1):
+    a1.setred()
+    t.sleep(1)
+    a1.setgreen()
 
 #----------------------Variable Erstellung----------------------#
 
@@ -33,22 +35,12 @@ zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel se
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
 b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
 
-#+++ Variabeln werden den Listen zugeornet +++#
-for i in range (0, b):
-    fs="fs"+str(i+1)
-    exec(f"a{i} = AmpelFussAnzeige(fs)")
-    lf.append(locals()[f"a{i}"])
-
-for i in range (0, a):
-    exec(f"a{i} = Ampel('Ampel',i+1)")
-    lv.append(locals()[f"a{i}"])
-
 tu =True
 
 lv=list()
 lf=list()
 
-#------------------------Korektur abfrage------------------------#
+#------------------------Korektur abfrage--------------------------#
 
 while tu == True:
     print("\033[31m"+"Warnung du kannst die Daten spaeter nicht mehr aendern")
@@ -63,21 +55,24 @@ while tu == True:
         tu = False
         print("\033[33m"+"execute ... ")
 
+#---------------Variabeln werden den Listen zugeornet---------------#
 
-#------------------------Fenster ausrichten------------------------#
+for i in range (0, b):
+    exec(f"a{i} = AmpelFuss('AmpelFuss',i+1)")
+    lf.append(locals()[f"a{i}"])
+
+for i in range (0, a):
+    exec(f"a{i} = Ampel('Ampel',i+1)")
+    lv.append(locals()[f"a{i}"])
+
+#------------------------Fenster ausrichten-------------------------#
 
 for i in range (0, a):
     lv[i].setgeo()
- 
-for i in range(0, b):
-    window_width = 200
-    window_height = 400
-    padding = 50
-    x = (window_width + padding) * i
-    y = 400
-    #(window_height + padding) * i
-    lf[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
+for i in range (0, b):
+    lf[i].setgeo()
+ 
 #--------------------------Ampel Animation--------------------------#
 
 #+++ Asyncio wird verwendet um Fuﬂg‰nger und Vehrkehrampel +++# 
@@ -88,8 +83,7 @@ for i in range(0,a):
     lv[i].setred()
 
 for i in range(0,a):
-    lf[i].setaus()
-    lf[i].setan([1,0,0])
+    lf[i].setred()
     
 t.sleep(z)
 
@@ -105,14 +99,13 @@ async def vampel():
         await asyncio.sleep(z)
         green_red_v(lv[i])
         await asyncio.sleep(2)
-
+        await asyncio.sleep(3)
 async def fampel():
     for i in range(0,b):
-        await asyncio.sleep(zf)
-        greenf(lf[i])
-        await asyncio.sleep(z)
-        redf(lf[i])
-        await asyncio.sleep(2)
+        red_green_f(lf[i])
+        await asyncio.sleep(z+zf)
+        green_red_f(lf[i])
+        await asyncio.sleep(5)
 
 
 while True:
