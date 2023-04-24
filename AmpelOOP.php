@@ -1,13 +1,16 @@
-+----------------+
-| Verkehrsampel  |
-+----------------+
-| -farbe: int    |
-| -zustand: int  |
-| -status:String |
-+----------------+
-| +setgreen()    |
-| +setyellow()   |
-| +getred()      |
-| +setaus()      |
-| +geometry()    |
-+----------------+
++-------------------------+
+|          Ampel          |
++-------------------------+
+| -name: AmpelAnzeige()   |
+| -window_width: int      |
+| -window_height: int     |
+| -padding = int          |
+| -x: int                 | 
+| -y: int                 |
++-------------------------+
+| +setgreen()             |
+| +setyellow()            |
+| +getred()               |
+| +setredyellow()         |
+| +setgeo()               |
++-------------------------+

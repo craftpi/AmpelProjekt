@@ -93,18 +93,16 @@ async def main():
 
 async def vampel():
     for i in range(0,a):
-        #greenf(lf[i])
         await asyncio.sleep(zf)
         red_green(lv[i])
         await asyncio.sleep(z)
-        redf(lf[i])
         green_red(lv[i])
         await asyncio.sleep(2)
 
 async def fampel():
     for i in range(0,b):
-        greenf(lf[i])
         await asyncio.sleep(zf)
+        greenf(lf[i])
         await asyncio.sleep(z)
         redf(lf[i])
         await asyncio.sleep(2)
