@@ -33,7 +33,22 @@ zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel se
 a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
 b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
 
+#+++ Variabeln werden den Listen zugeornet +++#
+for i in range (0, b):
+    fs="fs"+str(i+1)
+    exec(f"a{i} = AmpelFussAnzeige(fs)")
+    lf.append(locals()[f"a{i}"])
+
+for i in range (0, a):
+    exec(f"a{i} = Ampel('Ampel',i+1)")
+    lv.append(locals()[f"a{i}"])
+
 tu =True
+
+lv=list()
+lf=list()
+
+#------------------------Korektur abfrage------------------------#
 
 while tu == True:
     print("\033[31m"+"Warnung du kannst die Daten spaeter nicht mehr aendern")
@@ -48,19 +63,9 @@ while tu == True:
         tu = False
         print("\033[33m"+"execute ... ")
 
-lv=list()
-lf=list()
 
-for i in range (0, b):
-    fs="fs"+str(i+1)
-    exec(f"a{i} = AmpelFussAnzeige(fs)")
-    lf.append(locals()[f"a{i}"])
+#------------------------Fenster ausrichten------------------------#
 
-for i in range (0, a):
-    exec(f"a{i} = Ampel('Ampel',i+1)")
-    lv.append(locals()[f"a{i}"])
-
-#----------------------Fenster ausrichten----------------------#
 for i in range (0, a):
     lv[i].setgeo()
  
@@ -73,8 +78,10 @@ for i in range(0, b):
     #(window_height + padding) * i
     lf[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-#------------------------Ampel Animation------------------------#
+#--------------------------Ampel Animation--------------------------#
 
+#+++ Asyncio wird verwendet um Fuﬂg‰nger und Vehrkehrampel +++# 
+#+++ gleichzeitigt zu schalten.                            +++#
 
 
 for i in range(0,a):
