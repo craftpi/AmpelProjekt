@@ -1,4 +1,5 @@
 import time as t
+import asyncio
 from AmpelAnzeige import *
 from Ampel4 import *
 
@@ -85,15 +86,30 @@ for i in range(0,a):
     
 t.sleep(z)
 
-while True:
+async def main():
+    task1 = asyncio.create_task(vampel())
+    task2 = asyncio.create_task(fampel())
+    await asyncio.gather(task1, task2)
 
+async def vampel():
     for i in range(0,a):
-        greenf(lf[i])
-        t.sleep(zf)
+        #greenf(lf[i])
+        await asyncio.sleep(zf)
         red_green(lv[i])
-        t.sleep(z)
+        await asyncio.sleep(z)
         redf(lf[i])
         green_red(lv[i])
-        t.sleep(2)
+        await asyncio.sleep(2)
 
-        
+async def fampel():
+    for i in range(0,b):
+        greenf(lf[i])
+        await asyncio.sleep(zf)
+        await asyncio.sleep(z)
+        redf(lf[i])
+        await asyncio.sleep(2)
+
+
+while True:
+    asyncio.run(main())
+    
