@@ -29,11 +29,15 @@ def red_green_f(a1):
     a1.setgreen()
 
 #----------------------Variable Erstellung----------------------#
-
-z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
-zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
-a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
-b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
+while True:
+    try:
+        z=int(input("\033[0m"+"Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+        zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
+        a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
+        b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
+        break
+    except :
+        print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
 
 tu =True
 
@@ -54,6 +58,7 @@ while tu == True:
     else:
         tu = False
         print("\033[33m"+"execute ... ")
+    
 
 #---------------Variabeln werden den Listen zugeornet---------------#
 

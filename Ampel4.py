@@ -1,5 +1,7 @@
 from AmpelAnzeige import *
 
+#---------------------Verkehrs Ampel Klasse---------------------#
+
 class Ampel(object):
     def __init__(self,name,i):
         n=str(name)+str(i)
@@ -29,7 +31,8 @@ class Ampel(object):
     def setgeo(self):
        self.name.geometry(f"{self.window_width}x{self.window_height}+{self.x}+{self.y}")
 
-    pass
+
+#---------------------Fussgänger Ampel Klasse---------------------#
 
 class AmpelFuss(object):
     def __init__(self,name,i):
@@ -52,7 +55,7 @@ class AmpelFuss(object):
     def setgeo(self):
        self.name.geometry(f"{self.window_width}x{self.window_height}+{self.x}+{self.y}")
 
-    pass
+
 
 
 
