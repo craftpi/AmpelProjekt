@@ -35,7 +35,7 @@ while True:
         zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
         a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
         b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
-        if a & b <= 5:
+        if a <= 5 and b <= 5:
             break
         else:
             print("\033[31m"+"Du kannst nicht mehr als 5 Ampeln erstellen")
@@ -49,7 +49,7 @@ lf=list()
 
 #------------------------Korektur abfrage--------------------------#
 
-while tu == True:
+while True:
     print("\033[31m"+"Warnung du kannst die Daten spaeter nicht mehr aendern")
     print("Schaltzeit der Ampel: " + str(z),", ","Verzoegerung: " + str(zf),", ", "Anzahl der Verkehrsampel: " + str(a),", ", "Anzahl Fussgaengerampel: " + str(b) )
     fr=input("\033[36m"+"Moechtest du die Eigaben Korigieren [J;N] ? ")
@@ -59,7 +59,7 @@ while tu == True:
             zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
             a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
             b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
-            if a & b <= 5:
+            if a <= 5 and b <= 5:
                 break
             else:
                 while True:
@@ -69,14 +69,14 @@ while tu == True:
                         zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
                         a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
                         b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
-                        if a & b <= 5:
+                        if a <= 5 and b <= 5:
                             break
                     except:
                         print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
         except :
             print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
     else:
-        tu = False
+        break
         print("\033[33m"+"execute ... ")
     
 
