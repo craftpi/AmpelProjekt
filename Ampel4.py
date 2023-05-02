@@ -6,6 +6,8 @@ class Ampel(object):
     def __init__(self,name,i):
         n=str(name)+str(i)
         self.name = AmpelAnzeige(n)
+       # self.rootscreenwidth= Tk().winfo_screenwidth()
+        #self.rootscreenhight= Tk().winfo_screenheight()
         self.window_width = 200
         self.window_height = 400
         self.padding = 50
@@ -31,6 +33,9 @@ class Ampel(object):
     def setgeo(self):
        self.name.geometry(f"{self.window_width}x{self.window_height}+{self.x}+{self.y}")
 
+    def geoupscalle(self):
+        self.tk.winfo_screenwidth
+        self.tk.winfo_screenheight
 
 #---------------------Fussgänger Ampel Klasse---------------------#
 

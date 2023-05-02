@@ -1,7 +1,9 @@
 import time as t
+import asyncio
 from AmpelAnzeige import *
 
 #--------------------------Funktionen--------------------------#
+
 def green(a1):
     a1.setan([1,1,0])
     t.sleep(1)
@@ -25,13 +27,32 @@ def redf(a1):
 
 #----------------------Variable Erstellung----------------------#
 
-z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
-zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
-a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
-b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
+tu = True
 
-if z!=zf:
-    print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+while True:                                                                                                                                         # fängt Fehler ab fals eingabe nicht vorgenommen wird
+    try:
+        z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+        zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
+        a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
+        b=int(input("Wie viele Fussgaengersampel benoetigst du ? : ")) 
+        break
+    except :
+        print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
+
+while tu == True:                                                                                                                                  # fängt Fehler ab fals eingabe nicht vorgenommen wird und überprüft ob z = zf
+    if z!=zf:
+        print("\033[31m"+"Warnung Die Schaltzeiten von Fussgaengerampeln und Verkehrsampeln sind nicht gleich!")
+    print("\033[31m"+"du kannst die Daten spaeter nicht mehr aendern !")
+    print("Schaltzeit der Verkehrsampel: " + str(z),", ","Schaltzeit der Fussgaengerampel: " + str(zf),", ", "Anzahl der Verkehrsampel: " + str(a),", ", "Anzahl Fussgaengerampel: " + str(b) )
+    fr=input("\033[36m"+"Moechtest du die Eigaben Korigieren [J;N] ? ")
+    if fr == "J" :
+        z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+        zf=int(input("Wie Lange ist die Schaltzeit der Fussgaengerampel ? : "))
+        a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
+        b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
+    else:
+        tu = False
+        print("\033[33m"+"execute ... ")
 
 lv=list()
 lf=list()
@@ -53,7 +74,6 @@ for i in range(0, a):
     padding = 50
     x = (window_width + padding) * i
     y = 0
-    #(window_height + padding) * i
     lv[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 for i in range(0, b):
@@ -62,10 +82,12 @@ for i in range(0, b):
     padding = 50
     x = (window_width + padding) * i
     y = 400
-    #(window_height + padding) * i
     lf[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 #------------------------Ampel Animation------------------------#
+#++++ Asyncio wird verwendet um Fußgänger und Vehrkehrampel ++++# 
+#++++ gleichzeitigt zu schalten.                            ++++#
+
 
 for i in range(0,a):
     lv[i].setaus()
@@ -77,14 +99,27 @@ for i in range(0,a):
 
 t.sleep(2)
 
-while True:
+async def main():
+    task1 = asyncio.create_task(vampel())
+    task2 = asyncio.create_task(fampel())
+    await asyncio.gather(task1, task2)
 
+async def vampel():
     for i in range(0,a):
+        await asyncio.sleep(2)
         green(lv[i])
-        greenf(lf[i])
-        t.sleep(z)
+        await asyncio.sleep(z)
         red(lv[i])
+        await asyncio.sleep(1)
+
+async def fampel():
+    for i in range(0,b):
+        greenf(lf[i])
+        await asyncio.sleep(zf+2)
         redf(lf[i])
+        await asyncio.sleep(3)
 
-
+while True:
+    asyncio.run(main())
+    
 

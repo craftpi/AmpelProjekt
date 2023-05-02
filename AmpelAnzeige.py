@@ -70,7 +70,8 @@ class AmpelAnzeige:
     def geometry(self, geostrig):
         self.fenster.geometry(geostrig)
 
-#---------------------------------------------------------#              
+#---------------------------------------------------------#  
+            
 class AmpelFussAnzeige:
     def __init__(self, name):
         self.name=name

@@ -51,10 +51,14 @@ while tu == True:
     print("Schaltzeit der Ampel: " + str(z),", ","Verzoegerung: " + str(zf),", ", "Anzahl der Verkehrsampel: " + str(a),", ", "Anzahl Fussgaengerampel: " + str(b) )
     fr=input("\033[36m"+"Moechtest du die Eigaben Korigieren [J;N] ? ")
     if fr == "J" :
-        z=int(input("Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
-        zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
-        a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
-        b=int(input("Wie viele Fussgaengersampel benoetigst du ? : "))
+        try:
+            z=int(input("\033[0m"+"Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+            zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
+            a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
+            b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
+            break
+        except :
+            print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
     else:
         tu = False
         print("\033[33m"+"execute ... ")
@@ -111,7 +115,6 @@ async def fampel():
         await asyncio.sleep(z+zf)
         green_red_f(lf[i])
         await asyncio.sleep(5)
-
 
 while True:
     asyncio.run(main())

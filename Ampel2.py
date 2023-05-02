@@ -16,9 +16,13 @@ def red(a1):
     a1.setan([1,0,0])
 
 #----------------------Variable Erstellung----------------------#
-
-z=int(input("Wie Lange ist die Schaltzeit ? : "))
-a=int(input("Wie viele Ampel benoetigst du ? : "))
+while True: 
+    try:
+        z=int(input("\033[0m"+"Wie Lange ist die Schaltzeit ? : "))
+        a=int(input("Wie viele Ampel benoetigst du ? : "))
+        break
+    except:
+       print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
 
 l=list()
 
@@ -34,7 +38,6 @@ for i in range(0, a):
     padding = 50
     x = (window_width + padding) * i
     y = 0
-    #(window_height + padding) * i
     l[i].geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 #------------------------Ampel Animation------------------------#
