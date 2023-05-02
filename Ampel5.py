@@ -35,7 +35,10 @@ while True:
         zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
         a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
         b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
-        break
+        if a & b <= 5:
+            break
+        else:
+            print("\033[31m"+"Du kannst nicht mehr als 5 Ampeln erstellen")
     except :
         print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
 
@@ -56,7 +59,20 @@ while tu == True:
             zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
             a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
             b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
-            break
+            if a & b <= 5:
+                break
+            else:
+                while True:
+                    try:
+                        print("\033[31m"+"Du kannst nicht mehr als 5 Ampeln erstellen")
+                        z=int(input("\033[0m"+"Wie Lange ist die Schaltzeit der Verkehrsampel ? : "))
+                        zf=int(input("Wie gross soll die verzoegerung zwischen Fuss und Verkehrsampel sein  ? : "))
+                        a=int(input("Wie viele Verkehrsampel benoetigst du ? : "))
+                        b=int(input("Wie viele Fussgaengerampeln benoetigst du ? : "))
+                        if a & b <= 5:
+                            break
+                    except:
+                        print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
         except :
             print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
     else:
