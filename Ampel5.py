@@ -76,8 +76,9 @@ while True:
         except :
             print("\033[31m"+"Du hast Vergessen einen Wert Einzugeben")
     else:
-        break
         print("\033[33m"+"execute ... ")
+        break
+
     
 
 #---------------Variabeln werden den Listen zugeornet---------------#
